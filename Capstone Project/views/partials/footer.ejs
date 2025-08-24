@@ -1,0 +1,124 @@
+</main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; <%= new Date().getFullYear() %> My Blog. Built with <i class="fas fa-heart" style="color: #e74c3c;"></i> using Node.js, Express.js & EJS.</p>
+            <p>
+                <small>
+                    <i class="fas fa-code"></i> A simple blog application for sharing thoughts and ideas
+                </small>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for enhanced UX
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add staggered fade-in animation to cards
+            const cards = document.querySelectorAll('.card[data-index]');
+            cards.forEach((card) => {
+                const index = parseInt(card.getAttribute('data-index')) || 0;
+                setTimeout(() => {
+                    card.classList.add('fade-in');
+                }, index * 100); // 100ms delay between each card
+            });
+
+            // Add fade-in to other cards without delay
+            const otherCards = document.querySelectorAll('.card:not([data-index])');
+            otherCards.forEach(card => {
+                card.classList.add('fade-in');
+            });
+
+            // Handle delete confirmations
+            const deleteButtons = document.querySelectorAll('.btn-danger[data-action="delete"]');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const confirmed = confirm('Are you sure you want to delete this post? This action cannot be undone.');
+                    if (confirmed) {
+                        const postId = this.getAttribute('data-post-id');
+                        deletePost(postId);
+                    }
+                });
+            });
+
+            // Handle edit form submissions
+            const editForm = document.querySelector('#editForm');
+            if (editForm) {
+                editForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const formData = new FormData(this);
+                    const postId = this.getAttribute('data-post-id');
+                    updatePost(postId, formData);
+                });
+            }
+        });
+
+        // Function to delete a post
+        function deletePost(postId) {
+            fetch(`/posts/${postId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = data.redirect;
+                } else {
+                    alert('Error deleting post: ' + data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while deleting the post.');
+            });
+        }
+
+        // Function to update a post
+        function updatePost(postId, formData) {
+            const data = {
+                title: formData.get('title'),
+                content: formData.get('content'),
+                author: formData.get('author')
+            };
+
+            fetch(`/posts/${postId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = data.redirect;
+                } else {
+                    alert('Error updating post: ' + data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while updating the post.');
+            });
+        }
+
+        // Auto-resize textarea
+        function autoResize(textarea) {
+            textarea.style.height = 'auto';
+            textarea.style.height = textarea.scrollHeight + 'px';
+        }
+
+        // Apply auto-resize to all textareas
+        document.querySelectorAll('textarea').forEach(textarea => {
+            textarea.addEventListener('input', function() {
+                autoResize(this);
+            });
+            // Initial resize
+            autoResize(textarea);
+        });
+    </script>
+</body>
+</html>

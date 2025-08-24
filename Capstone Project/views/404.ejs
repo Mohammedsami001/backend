@@ -1,0 +1,47 @@
+<%- include('partials/header') %>
+
+<div class="error-page fade-in">
+    <div class="card text-center" style="max-width: 600px; margin: 0 auto;">
+        <h1>404</h1>
+        <h2><i class="fas fa-search"></i> Page Not Found</h2>
+        <p style="font-size: 1.1rem; margin: 1.5rem 0; color: #6c757d;">
+            Oops! The page you're looking for doesn't exist. It might have been moved, deleted, or you entered the wrong URL.
+        </p>
+        
+        <div style="margin: 2rem 0;">
+            <i class="fas fa-ghost" style="font-size: 4rem; color: #667eea; opacity: 0.7;"></i>
+        </div>
+        
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+            <a href="/" class="btn btn-primary">
+                <i class="fas fa-home"></i> Go Home
+            </a>
+            <a href="/create" class="btn btn-success">
+                <i class="fas fa-plus"></i> Create New Post
+            </a>
+            <button onclick="history.back()" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Go Back
+            </button>
+        </div>
+        
+        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e9ecef;">
+            <h4><i class="fas fa-question-circle"></i> What can you do?</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem; text-align: left;">
+                <div>
+                    <h5><i class="fas fa-check"></i> Check the URL</h5>
+                    <p class="text-muted">Make sure the web address is spelled correctly.</p>
+                </div>
+                <div>
+                    <h5><i class="fas fa-newspaper"></i> Browse Posts</h5>
+                    <p class="text-muted">Visit the home page to see all available blog posts.</p>
+                </div>
+                <div>
+                    <h5><i class="fas fa-pen"></i> Create Content</h5>
+                    <p class="text-muted">Start writing and share your thoughts with others.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

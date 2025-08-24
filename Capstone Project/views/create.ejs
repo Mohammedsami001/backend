@@ -1,0 +1,103 @@
+<%- include('partials/header') %>
+
+<div class="fade-in">
+    <div class="card" style="max-width: 800px; margin: 0 auto;">
+        <h2><i class="fas fa-plus-circle"></i> Create New Blog Post</h2>
+        <p class="text-muted mb-3">Share your thoughts, ideas, and stories with the world</p>
+        
+        <% if (typeof error !== 'undefined') { %>
+            <div class="error">
+                <i class="fas fa-exclamation-triangle"></i>
+                <%= error %>
+            </div>
+        <% } %>
+        
+        <form action="/posts" method="POST" class="post-form">
+            <div class="form-group">
+                <label for="title">
+                    <i class="fas fa-heading"></i> Post Title *
+                </label>
+                <input 
+                    type="text" 
+                    id="title" 
+                    name="title" 
+                    class="form-control" 
+                    placeholder="Enter an engaging title for your post..."
+                    required
+                    maxlength="100"
+                    value="<%= typeof title !== 'undefined' ? title : '' %>"
+                >
+                <small class="text-muted">Maximum 100 characters</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="author">
+                    <i class="fas fa-user"></i> Author Name
+                </label>
+                <input 
+                    type="text" 
+                    id="author" 
+                    name="author" 
+                    class="form-control" 
+                    placeholder="Your name (optional)"
+                    maxlength="50"
+                    value="<%= typeof author !== 'undefined' ? author : '' %>"
+                >
+                <small class="text-muted">Leave blank to post as Anonymous</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="content">
+                    <i class="fas fa-pen"></i> Post Content *
+                </label>
+                <textarea 
+                    id="content" 
+                    name="content" 
+                    class="form-control" 
+                    rows="10"
+                    placeholder="Write your blog post content here... Share your thoughts, experiences, or stories!"
+                    required
+                    style="min-height: 200px;"
+                ><%= typeof content !== 'undefined' ? content : '' %></textarea>
+                <small class="text-muted">
+                    <i class="fas fa-lightbulb"></i> 
+                    Tip: Take your time to craft something meaningful and engaging for your readers
+                </small>
+            </div>
+            
+            <div class="form-actions" style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 2rem;">
+                <a href="/" class="btn btn-secondary">
+                    <i class="fas fa-times"></i> Cancel
+                </a>
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-paper-plane"></i> Publish Post
+                </button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Writing Tips -->
+    <div class="card" style="max-width: 800px; margin: 2rem auto 0;">
+        <h3><i class="fas fa-lightbulb"></i> Writing Tips</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1rem;">
+            <div>
+                <h4><i class="fas fa-bullseye"></i> Be Clear & Concise</h4>
+                <p class="text-muted">Make your main point early and support it with clear examples.</p>
+            </div>
+            <div>
+                <h4><i class="fas fa-heart"></i> Write with Passion</h4>
+                <p class="text-muted">Share topics you're genuinely interested in or experienced with.</p>
+            </div>
+            <div>
+                <h4><i class="fas fa-users"></i> Know Your Audience</h4>
+                <p class="text-muted">Write in a tone and style that resonates with your readers.</p>
+            </div>
+            <div>
+                <h4><i class="fas fa-spell-check"></i> Review & Edit</h4>
+                <p class="text-muted">Take a moment to proofread before publishing your post.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

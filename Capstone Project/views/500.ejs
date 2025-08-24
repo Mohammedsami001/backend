@@ -1,0 +1,48 @@
+<%- include('partials/header') %>
+
+<div class="error-page fade-in">
+    <div class="card text-center" style="max-width: 600px; margin: 0 auto;">
+        <h1>500</h1>
+        <h2><i class="fas fa-exclamation-triangle"></i> Server Error</h2>
+        <p style="font-size: 1.1rem; margin: 1.5rem 0; color: #6c757d;">
+            Something went wrong on our end. We're working to fix this issue as quickly as possible.
+        </p>
+        
+        <div style="margin: 2rem 0;">
+            <i class="fas fa-tools" style="font-size: 4rem; color: #dc3545; opacity: 0.7;"></i>
+        </div>
+        
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+            <a href="/" class="btn btn-primary">
+                <i class="fas fa-home"></i> Go Home
+            </a>
+            <button onclick="window.location.reload()" class="btn btn-secondary">
+                <i class="fas fa-redo"></i> Try Again
+            </button>
+            <button onclick="history.back()" class="btn btn-outline">
+                <i class="fas fa-arrow-left"></i> Go Back
+            </button>
+        </div>
+        
+        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e9ecef;">
+            <h4><i class="fas fa-info-circle"></i> What happened?</h4>
+            <div style="text-align: left; margin-top: 1rem;">
+                <p class="text-muted">
+                    Our server encountered an unexpected condition that prevented it from fulfilling your request. 
+                    This could be due to:
+                </p>
+                <ul style="color: #6c757d; margin: 1rem 0; padding-left: 1.5rem;">
+                    <li>A temporary server overload</li>
+                    <li>A configuration issue</li>
+                    <li>An unexpected error in the application</li>
+                </ul>
+                <p class="text-muted">
+                    Please try again in a few moments. If the problem persists, the issue has been logged and 
+                    our team will investigate.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

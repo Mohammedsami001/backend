@@ -1,3 +1,5 @@
+# Capstone-Project-My-Blog-
+Backend Capstone Project using Node.js, Express.js and EJS.
 # Blog Web Application
 
 A simple yet elegant blog web application built with Node.js, Express.js, and EJS. This application allows users to create, read, update, and delete blog posts with a clean, responsive interface.

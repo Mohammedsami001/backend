@@ -136,6 +136,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Blog server is running on http://localhost:${PORT}`);
-    console.log(`Press Ctrl+C to stop the server`);
+    console.log(`Blog server is running on ${PORT}`);
 });

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>😂 Personalized Joke Generator</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+  <div class="container">
+    <h1>😂 Personalized Joke Generator</h1>
+    
+    <form action="/getJoke" method="POST">
+      <button type="submit">Get Joke</button>
+    </form>
+
+    <% if (error) { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+
+    <% if (joke) { %>
+      <div class="result">
+        <p><%= joke %></p>
+      </div>
+    <% } %>
+  </div>
+</body>
+</html>
